@@ -1,5 +1,5 @@
 export function App() {
   return (
-    <div>Movie Catalog</div>
+    <div className="text-2xl">Movie Catalog</div>
   )
 }
