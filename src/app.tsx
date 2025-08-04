@@ -1,91 +1,32 @@
-import banner from '/banner.png'
-import bannerSons from '/banner-2.png'
+import { useQuery } from '@tanstack/react-query'
 import { Card } from './components/card'
 
+export type Movie = {
+  id: string
+  title: string
+  poster_path: string
+}
+
 export function App() {
+  const { data: movies } = useQuery<Movie[]>({
+    queryKey: ['movies'],
+    queryFn: async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/popular?api_key=da5d36b98e985f16ef3e0de0e24fda59&language=pt-BR&page=1`
+      )
+
+      const data = await response.json()
+      return data.results as Movie[]
+    },
+  })
+
   return (
-    <div className="h-dvh w-full p-20 text-center">
+    <div className="w-full py-20 text-center">
       <span className="text-2xl">Movie Catalog</span>
-      <div className="flex gap-4">
-        {/* Card 1 */}
-        <Card />
-
-        {/* Card 2 */}
-        <div className="w-[280px] flex flex-col items-center bg-zinc-900 rounded-[10px] mt-8 border-1 border-zinc-700">
-          <img
-            src={bannerSons}
-            className="w-[107px] h-[145px] content-center"
-            alt="Sons of Anarchy banner"
-          />
-          <div className="h-0.25 w-full bg-zinc-700" />
-          <div className="w-full text-start p-4 space-y-3">
-            <div className="flex gap-2 items-center">
-              <span>▶️</span>
-              <p className="font-bold">Sons of Anarchy</p>
-            </div>
-            <div className="space-y-2">
-              <p className="text-sm text-zinc-200">Kurt Sutter</p>
-              <div className="rounded-sm px-2 w-fit bg-zinc-800 text-sm">
-                Drama
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-zinc-200">16%</span>
-                <div className="w-32 bg-emerald-900 rounded-full h-1 overflow-hidden">
-                  <div className="bg-emerald-600 rounded-full h-full w-[16%]" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Card 3 */}
-        <div className="w-[280px] flex flex-col items-center bg-zinc-900 rounded-[10px] mt-8 border-1 border-zinc-700">
-          <img
-            src={banner}
-            className="w-[107px] h-[145px] content-center"
-            alt="Um Sonho de Liberdade banner"
-          />
-          <div className="h-0.25 w-full bg-zinc-700" />
-          <div className="w-full text-start p-4 space-y-3">
-            <div className="flex gap-2 items-center">
-              <span>✅</span>
-              <p className="font-bold">Um Sonho de Liberdade</p>
-            </div>
-            <div className="space-y-2">
-              <p className="text-sm text-zinc-200">Frank Darabont</p>
-              <div className="rounded-full px-2 w-fit bg-emerald-900 text-sm flex items-center gap-1.5">
-                <div className="size-2 rounded-full bg-emerald-600" />
-                <span className="text-zinc-200">Completed</span>
-              </div>
-              <div className="rounded-sm px-2 w-fit bg-zinc-800 text-sm">
-                <span>⭐⭐⭐⭐</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Card 4 */}
-        <div className="w-[280px] flex flex-col items-center bg-zinc-900 rounded-[10px] mt-8 border-1 border-zinc-700">
-          <img
-            src={banner}
-            className="w-[107px] h-[145px] content-center"
-            alt="Um Sonho de Liberdade banner"
-          />
-          <div className="h-0.25 w-full bg-zinc-700" />
-          <div className="w-full text-start p-4 space-y-3">
-            <p className="font-bold">Um Sonho de Liberdade</p>
-            <div className="space-y-2">
-              <p className="text-sm text-zinc-200">Frank Darabont</p>
-              <div className="rounded-full px-2 w-fit bg-zinc-800 text-sm flex items-center gap-1.5">
-                <div className="size-2 rounded-full bg-zinc-400" />
-                <span className="text-zinc-200">Not started</span>
-              </div>
-              <div className="rounded-sm px-2 w-fit bg-zinc-800 text-sm">
-                <span className="text-zinc-200">Not yet rated</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="flex gap-4 flex-wrap justify-center">
+        {movies?.map(movie => (
+          <Card key={movie.id} movie={movie} />
+        ))}
       </div>
     </div>
   )
