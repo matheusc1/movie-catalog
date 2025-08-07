@@ -22,7 +22,7 @@ export function App() {
 
   return (
     <div className="w-full py-20 text-center">
-      <span className="text-2xl">Movie Catalog</span>
+      <span className="text-2xl text-neutral-50">Movie Catalog</span>
       <div className="flex gap-4 flex-wrap justify-center">
         {movies?.map(movie => (
           <Card key={movie.id} movie={movie} />
