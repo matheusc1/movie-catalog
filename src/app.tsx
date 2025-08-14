@@ -4,19 +4,40 @@ import { Card } from './components/card'
 export type Movie = {
   id: string
   title: string
+  genre_ids: string[]
+  genres?: string[]
   poster_path: string
 }
 
 export function App() {
+  const { data: genres } = useQuery({
+    queryKey: ['genres'],
+    queryFn: async () => {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_API_KEY}&language=pt-BR`
+      )
+      const data = await res.json()
+      return data.genres
+    },
+    staleTime: Infinity,
+  })
+
   const { data: movies } = useQuery<Movie[]>({
     queryKey: ['movies'],
     queryFn: async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=da5d36b98e985f16ef3e0de0e24fda59&language=pt-BR&page=1`
+        `https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_API_KEY}&language=pt-BR&page=1`
       )
 
       const data = await response.json()
-      return data.results as Movie[]
+
+      return data.results.map((movie: Movie) => ({
+        ...movie,
+        genres: movie.genre_ids
+          .map(id => genres.find((g: { id: string }) => g.id === id)?.name)
+          .filter(Boolean)
+          .slice(0, 2) as string[],
+      }))
     },
   })
 

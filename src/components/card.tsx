@@ -17,8 +17,12 @@ export function Card({ movie }: MovieProps) {
         <p className="font-bold truncate text-neutral-100">{movie.title}</p>
         <div className="space-y-2">
           <p className="text-sm">Diretor</p>
-          <div className="rounded-sm px-2 w-fit bg-neutral-750 text-sm">
-            Gênero
+          <div className='flex gap-2 flex-row'>
+          {movie.genres?.map(genre => (
+            <div key={genre} className="rounded-sm px-2 w-fit bg-neutral-750 text-sm">
+              {genre}
+            </div>
+          ))}
           </div>
         </div>
       </div>
