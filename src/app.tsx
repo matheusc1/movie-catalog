@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useIsFetching, useQuery } from '@tanstack/react-query'
 import { Card } from './components/card'
 
 export type Movie = {
@@ -11,6 +11,8 @@ export type Movie = {
 }
 
 export function App() {
+  const isFetching = useIsFetching()
+
   const { data: genres } = useQuery({
     queryKey: ['genres'],
     queryFn: async () => {
@@ -44,7 +46,7 @@ export function App() {
       })),
   })
 
-  const { data: directors, isLoading } = useQuery({
+  const { data: directors } = useQuery({
     queryKey: ['directors', movies?.map(m => m.id).join(',')],
     enabled: !!movies,
     queryFn: async () => {
@@ -69,7 +71,7 @@ export function App() {
     director: directors?.find(d => d.movieId === movie.id)?.director,
   }))
 
-  if (isLoading) {
+  if (isFetching > 0) {
     return <div className="w-full h-screen flex items-center justify-center animate-pulse">Loading...</div>
   }
 
