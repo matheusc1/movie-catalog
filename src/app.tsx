@@ -44,7 +44,7 @@ export function App() {
       })),
   })
 
-  const { data: directors } = useQuery({
+  const { data: directors, isLoading } = useQuery({
     queryKey: ['directors', movies?.map(m => m.id).join(',')],
     enabled: !!movies,
     queryFn: async () => {
@@ -68,6 +68,10 @@ export function App() {
     ...movie,
     director: directors?.find(d => d.movieId === movie.id)?.director,
   }))
+
+  if (isLoading) {
+    return <div className="w-full h-screen flex items-center justify-center animate-pulse">Loading...</div>
+  }
 
   return (
     <div className="w-full py-20 text-center">
