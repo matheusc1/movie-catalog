@@ -2,18 +2,9 @@ import { useIsFetching } from '@tanstack/react-query'
 import { Card } from './components/card'
 import { useMovies } from './hooks/useMovies'
 
-export type Movie = {
-  id: string
-  title: string
-  director: string
-  genre_ids: string[]
-  genres?: string[]
-  poster_path: string
-}
-
 export function App() {
   const isFetching = useIsFetching()
-  const { moviesList } = useMovies()
+  const { movies } = useMovies()
 
   if (isFetching > 0) {
     return (
@@ -29,7 +20,7 @@ export function App() {
         Most Popular Movies
       </span>
       <div className="flex gap-4 flex-wrap justify-center">
-        {moviesList?.map(movie => (
+        {movies?.map(movie => (
           <Card key={movie.id} movie={movie} />
         ))}
       </div>
