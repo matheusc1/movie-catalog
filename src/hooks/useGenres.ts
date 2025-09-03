@@ -6,7 +6,7 @@ type Genres = {
 }
 
 export function useGenres() {
-  const { data: genres } = useQuery<Genres[]>({
+  const { data: genres, isError } = useQuery<Genres[]>({
     queryKey: ['genres'],
     queryFn: async () => {
       const res = await fetch(
@@ -18,5 +18,5 @@ export function useGenres() {
     staleTime: Infinity,
   })
 
-  return { genres }
+  return { genres, isError }
 }

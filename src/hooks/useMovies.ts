@@ -3,9 +3,9 @@ import { useGenres } from './useGenres'
 import { useRawMovies } from './useRawMovies'
 
 export function useMovies() {
-  const { genres } = useGenres()
-  const { rawMovies } = useRawMovies()
-  const { directors } = useDirectors()
+  const { genres, ...genresQuery } = useGenres()
+  const { rawMovies, ...moviesQuery } = useRawMovies()
+  const { directors, ...directorsQuery } = useDirectors()
 
   const movies = rawMovies?.map(movie => ({
     ...movie,
@@ -18,5 +18,9 @@ export function useMovies() {
     director: directors?.find(d => d.movieId === movie.id)?.director,
   }))
 
-  return { movies }
+  return {
+    movies,
+    isError:
+      moviesQuery.isError || genresQuery.isError || directorsQuery.isError,
+  }
 }

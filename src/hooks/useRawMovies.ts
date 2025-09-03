@@ -10,7 +10,7 @@ export type Movie = {
 }
 
 export function useRawMovies() {
-  const { data: rawMovies } = useQuery<Movie[]>({
+  const { data: rawMovies, isError } = useQuery<Movie[]>({
     queryKey: ['movies'],
     queryFn: async () => {
       const response = await fetch(
@@ -22,5 +22,5 @@ export function useRawMovies() {
     },
   })
 
-  return { rawMovies }
+  return { rawMovies, isError }
 }

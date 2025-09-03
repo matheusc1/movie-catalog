@@ -14,7 +14,7 @@ export type Director = {
 export function useDirectors() {
   const { rawMovies: movies } = useRawMovies()
 
-  const { data: directors } = useQuery({
+  const { data: directors, isError } = useQuery({
     queryKey: ['directors', movies?.map(m => m.id).join(',')],
     enabled: !!movies,
     queryFn: async () => {
@@ -41,5 +41,5 @@ export function useDirectors() {
     },
   })
 
-  return { directors }
+  return { directors, isError }
 }
