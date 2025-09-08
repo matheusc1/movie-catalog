@@ -1,20 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
-
-type Genres = {
-  id: number
-  name: string
-}
+import { type Genres, getGenres } from '../api/getGenres'
 
 export function useGenres() {
   const { data: genres, isError } = useQuery<Genres[]>({
     queryKey: ['genres'],
-    queryFn: async () => {
-      const res = await fetch(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_API_KEY}&language=pt-BR`
-      )
-      const data = await res.json()
-      return data.genres
-    },
+    queryFn: getGenres,
     staleTime: Infinity,
   })
 

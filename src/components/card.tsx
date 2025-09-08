@@ -1,4 +1,4 @@
-import type { Movie } from '../hooks/useRawMovies'
+import type { Movie } from '../api/getPopularMovies'
 
 interface MovieProps {
   movie: Movie
