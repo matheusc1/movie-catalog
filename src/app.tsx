@@ -28,7 +28,7 @@ export function App() {
   }
 
   return (
-    <div className="w-full py-20 text-center">
+    <div className="w-full py-10 text-center">
       <span className="text-2xl text-neutral-50 font-semibold">
         Popular Movies
       </span>
