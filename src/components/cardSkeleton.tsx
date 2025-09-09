@@ -1,0 +1,18 @@
+export function CardSkeleton() {
+  return (
+    <div className="w-[280px] h-fit flex flex-col items-center border-1 bg-neutral-800 border-neutral-775 rounded-[10px] mt-8">
+      <div className="w-[107px] h-[145px] bg-neutral-700 animate-pulse" />
+      <div className="h-0.25 w-full bg-neutral-750"/>
+      <div className="w-full p-4 space-y-6">
+        <div className="h-6 w-48 bg-neutral-700 rounded-md animate-pulse" />
+        <div className="space-y-2">
+          <div className="h-4 w-24 bg-neutral-600 rounded-md animate-pulse" />
+          <div className="flex gap-2 flex-row">
+            <div className="rounded-md h-4 w-20 bg-neutral-750 animate-pulse" />
+            <div className="rounded-md h-4 w-20 bg-neutral-750 animate-pulse" />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
