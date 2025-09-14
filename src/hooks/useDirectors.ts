@@ -5,11 +5,11 @@ import { useRawMovies } from './useRawMovies'
 export function useDirectors() {
   const { rawMovies: movies } = useRawMovies()
 
-  const { data: directors, isError } = useQuery({
+  const { data: directors, isError, refetch } = useQuery({
     queryKey: ['directors', movies?.map(m => m.id)],
     enabled: !!movies,
     queryFn: () => getDirectors(movies!.map(m => m.id)),
   })
 
-  return { directors, isError }
+  return { directors, isError, refetch }
 }

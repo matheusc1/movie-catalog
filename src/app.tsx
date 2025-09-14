@@ -6,10 +6,10 @@ import { useMovies } from './hooks/useMovies'
 
 export function App() {
   const isFetching = useIsFetching()
-  const { movies, isError } = useMovies()
+  const { movies, isError, refetch } = useMovies()
 
   if (isError) {
-    return <ErrorFallback onRetry={() => window.location.reload()} />
+    return <ErrorFallback onRetry={refetch} isFetching={isFetching > 0} />
   }
 
   return (

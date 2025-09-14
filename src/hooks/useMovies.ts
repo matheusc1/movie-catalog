@@ -22,5 +22,10 @@ export function useMovies() {
     movies,
     isError:
       moviesQuery.isError || genresQuery.isError || directorsQuery.isError,
+    refetch: () => {
+      moviesQuery.refetch()
+      genresQuery.refetch()
+      directorsQuery.refetch()
+    },
   }
 }
