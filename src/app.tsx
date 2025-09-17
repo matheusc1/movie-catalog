@@ -14,9 +14,9 @@ export function App() {
 
   return (
     <div className="w-full py-10 text-center">
-      <span className="text-2xl text-neutral-50 font-semibold">
+      <h1 className="text-2xl text-neutral-50 font-semibold text-shadow-sm text-shadow-neutral-950/70">
         Filmes mais populares
-      </span>
+      </h1>
       <div className="flex gap-4 flex-wrap justify-center">
         {movies?.map(movie => (
           <Card key={movie.id} movie={movie} />

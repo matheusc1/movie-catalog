@@ -6,7 +6,7 @@ interface MovieProps {
 
 export function Card({ movie }: MovieProps) {
   return (
-    <div className="w-[280px] h-fit flex flex-col items-center border-1 bg-neutral-800 border-neutral-775 rounded-[10px] mt-8">
+    <div className="w-[280px] h-fit flex flex-col items-center border-1 bg-neutral-800 border-neutral-775 rounded-[10px] mt-8 shadow-sm">
       <img
         src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
         className="w-[107px] h-[145px] content-center"
