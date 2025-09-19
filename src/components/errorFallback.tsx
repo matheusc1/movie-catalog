@@ -9,7 +9,7 @@ export function ErrorFallback({ onRetry, isFetching }: ErrorFallbackProps) {
       <span className="text-6xl">⚠️</span>
 
       <div className="space-y-2">
-        <p className="text-lg font-semibold text-neutral-200 text-center">
+        <p className="text-lg font-bold font-title text-neutral-200 text-center">
           Não foi possível carregar os filmes.
         </p>
         <p className="text-sm text-neutral-400 text-center">

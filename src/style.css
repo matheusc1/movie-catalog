@@ -1,6 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz@0,6..12;1,6..12&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-neutral-750: #3A3A3A;
-  --color-neutral-775: #2D2D2D;
+  --color-neutral-125: #F0EFED;
+  --color-neutral-150: #EDEDEC;
+  --color-neutral-175: #ECEBE9;
+
+  --color-neutral-725: #3A3A3A;
+  --color-neutral-750: #2D2D2D;
+  --color-neutral-775: #2C2C2B;
+
+  --font-title: 'Quicksand', sans-serif;
+  --font-sans: 'Nunito Sans', sans-serif;
 }

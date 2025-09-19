@@ -14,7 +14,7 @@ export function App() {
 
   return (
     <div className="w-full py-10 text-center">
-      <h1 className="text-2xl text-neutral-50 font-semibold text-shadow-sm text-shadow-neutral-950/70">
+      <h1 className="text-2xl font-title text-neutral-50 font-bold text-shadow-sm text-shadow-neutral-950/70">
         Filmes mais populares
       </h1>
       <div className="flex gap-4 flex-wrap justify-center">
