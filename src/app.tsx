@@ -13,11 +13,11 @@ export function App() {
   }
 
   return (
-    <div className="w-full py-10 text-center">
+    <div className="w-full py-10 text-center space-y-10">
       <h1 className="text-2xl font-title text-neutral-50 font-bold text-shadow-sm text-shadow-neutral-950/70">
         Filmes mais populares
       </h1>
-      <div className="flex gap-4 flex-wrap justify-center">
+      <div className="flex gap-5 flex-wrap justify-center">
         {movies?.map(movie => (
           <Card key={movie.id} movie={movie} />
         ))}
