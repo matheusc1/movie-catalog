@@ -24,7 +24,7 @@ export async function getDirectors(movieIds: number[]): Promise<Director[]> {
       movieIds.map(async movieId => {
         const response = await fetch(
           `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${
-            import.meta.env.VITE_API_KEY
+            import.meta.env.VITE_TMDB_API_KEY
           }&language=pt-BR`
         )
 

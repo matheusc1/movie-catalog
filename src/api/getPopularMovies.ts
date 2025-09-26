@@ -10,7 +10,7 @@ export type Movie = {
 export async function getPopularMovies(): Promise<Movie[]> {
   try {
     const response = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_API_KEY}&language=pt-BR&page=1`
+      `https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=pt-BR&page=1`
     )
 
     const data = await response.json()
