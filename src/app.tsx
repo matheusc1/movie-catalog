@@ -18,6 +18,11 @@ export function App() {
       <div className="mx-auto flex items-end justify-end -mt-4 -mb-3">
         <ModeToggle />
       </div>
+      <input
+        type="text"
+        className="w-full mb-7 mt-10 rounded-lg px-4 py-2 bg-transparent border border-neutral-150 dark:border-neutral-725 placeholder:text-neutral-600 dark:placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-200 dark:focus:ring-zinc-500"
+        placeholder='Buscar filmes...'
+      />
       <h1 className="text-2xl font-title text-neutral-950 dark:text-neutral-50 font-bold text-shadow-sm text-shadow-neutral-100/70 dark:text-shadow-neutral-950/70">
         Filmes mais populares
       </h1>
