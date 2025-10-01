@@ -14,14 +14,14 @@ export function App() {
   }
 
   return (
-    <div className="max-w-[1180px] w-full mx-auto py-10 text-center space-y-10">
-      <div className="mx-auto flex items-end justify-end -mt-4 -mb-3">
+    <div className="max-w-[1180px] w-full mx-auto px-6 lg:px-0 py-10 text-center space-y-10">
+      <div className="flex justify-end -mt-4 -mb-3 relative z-10">
         <ModeToggle />
       </div>
       <input
         type="text"
         className="w-full mb-7 mt-10 rounded-lg px-4 py-2 bg-transparent border border-neutral-150 dark:border-neutral-725 placeholder:text-neutral-600 dark:placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-200 dark:focus:ring-zinc-500"
-        placeholder='Buscar filmes...'
+        placeholder="Buscar filmes..."
       />
       <h1 className="text-2xl font-title text-neutral-950 dark:text-neutral-50 font-bold text-shadow-sm text-shadow-neutral-100/70 dark:text-shadow-neutral-950/70">
         Filmes mais populares
