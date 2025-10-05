@@ -1,4 +1,5 @@
 import { useIsFetching } from '@tanstack/react-query'
+import { LucideSearch } from 'lucide-react'
 import { Card } from './components/card'
 import { CardSkeleton } from './components/cardSkeleton'
 import { ErrorFallback } from './components/errorFallback'
@@ -15,15 +16,18 @@ export function App() {
 
   return (
     <div className="max-w-[1180px] w-full mx-auto px-6 lg:px-0 py-10 text-center space-y-10">
-      <div className="flex justify-end -mt-4 -mb-3 relative z-10">
+      <div className="flex justify-end -mt-6 mb-2.5 relative z-10">
         <ModeToggle />
       </div>
-      <input
-        type="text"
-        className="w-full mb-7 mt-10 rounded-lg px-4 py-2 bg-transparent border border-neutral-150 dark:border-neutral-725 placeholder:text-neutral-600 dark:placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-200 dark:focus:ring-zinc-500"
-        placeholder="Buscar filmes..."
-      />
-      <h1 className="text-2xl font-title text-neutral-950 dark:text-neutral-50 font-bold text-shadow-sm text-shadow-neutral-100/70 dark:text-shadow-neutral-950/70">
+      <div className="relative w-full mb-7">
+        <input
+          type="text"
+          className="w-full rounded-lg px-4 pr-12 py-2 bg-transparent border border-neutral-150 dark:border-neutral-725 placeholder:text-neutral-600 dark:placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-200 dark:focus:ring-zinc-500"
+          placeholder="Buscar filmes..."
+        />
+        <LucideSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-600 dark:text-neutral-400" />
+      </div>
+      <h1 className="text-3xl font-title text-neutral-950 dark:text-neutral-50 font-bold text-shadow-sm text-shadow-neutral-100/70 dark:text-shadow-neutral-950/70">
         Filmes mais populares
       </h1>
       <div className="flex gap-5 flex-wrap justify-center">
