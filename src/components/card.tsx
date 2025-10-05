@@ -14,14 +14,16 @@ export function Card({ movie }: MovieProps) {
       />
       <div className="h-0.25 w-full bg-neutral-150 dark:bg-neutral-725" />
       <div className="w-full text-start p-4 space-y-3">
-        <p className="font-bold font-title truncate">{movie.title}</p>
+        <p className="text-lg font-bold font-title truncate">{movie.title}</p>
         <div className="space-y-2">
-          <p className="text-sm">{movie.director || 'Desconhecido'}</p>
+          <p className="text-sm text-neutral-700 dark:text-neutral-300">
+            {movie.director || 'Desconhecido'}
+          </p>
           <div className="flex gap-2 flex-row">
             {movie.genres?.map(genre => (
               <div
                 key={genre}
-                className="rounded-sm px-2 w-fit bg-neutral-125 dark:bg-neutral-725 text-sm"
+                className="text-sm rounded-md px-2 py-0.5 w-fit bg-neutral-125 text-neutral-700 dark:text-neutral-300 dark:bg-neutral-725"
               >
                 {genre || 'Desconhecido'}
               </div>
