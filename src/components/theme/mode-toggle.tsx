@@ -1,3 +1,4 @@
+import { LucideMoon, LucideSun } from 'lucide-react'
 import { useTheme } from './theme-provider'
 
 export function ModeToggle() {
@@ -9,8 +10,14 @@ export function ModeToggle() {
 
   return (
     <label className="inline-flex items-center cursor-pointer">
-      <span className="mr-2">Tema escuro</span>
+      <span className="mr-2 hidden sm:inline">Tema escuro</span>
+      {theme === 'dark' ? (
+        <LucideMoon className="mr-1 size-5 text-neutral-400 sm:hidden" />
+      ) : (
+        <LucideSun className="mr-1 size-5 text-yellow-500 sm:hidden" />
+      )}
       <input
+        aria-label="Alternar tema"
         type="checkbox"
         className="sr-only peer"
         checked={theme === 'dark'}
