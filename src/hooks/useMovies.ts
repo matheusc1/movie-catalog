@@ -1,31 +1,47 @@
+import { mapMovies } from '../utils/map-movies'
 import { useDirectors } from './useDirectors'
 import { useGenres } from './useGenres'
-import { useRawMovies } from './useRawMovies'
+import { usePopularMovies } from './usePopularMovies'
+import { useSearchMovies } from './useSearchMovies'
 
-export function useMovies() {
-  const { genres, ...genresQuery } = useGenres()
-  const { rawMovies, ...moviesQuery } = useRawMovies()
-  const { directors, ...directorsQuery } = useDirectors()
+interface UseMoviesOptions {
+  search?: string
+}
 
-  const movies = rawMovies?.map(movie => ({
-    ...movie,
+export function useMovies({ search }: UseMoviesOptions = {}) {
+  const { genres, isError: isGenresError, refetch: refetchGenres } = useGenres()
 
-    genres: movie.genre_ids
-      .map(id => genres?.find(g => g.id === id)?.name)
-      .filter(Boolean)
-      .slice(0, 2) as string[],
+  const {
+    popularMovies,
+    isError: isPopularError,
+    refetch: refetchPopular,
+  } = usePopularMovies()
+  const {
+    searchMovies,
+    isError: isSearchError,
+    refetch: refetchSearch,
+  } = useSearchMovies(search ?? '')
 
-    director: directors?.find(d => d.movieId === movie.id)?.director,
-  }))
+  const rawMovies = search ? searchMovies : popularMovies
 
-  return {
-    movies,
-    isError:
-      moviesQuery.isError || genresQuery.isError || directorsQuery.isError,
-    refetch: () => {
-      moviesQuery.refetch()
-      genresQuery.refetch()
-      directorsQuery.refetch()
-    },
+  const {
+    directors,
+    isError: isDirectorsError,
+    refetch: refetchDirectors,
+  } = useDirectors(rawMovies?.map(m => m.id))
+
+  const movies = mapMovies(rawMovies, genres, directors)
+
+  const isError =
+    isGenresError ||
+    isDirectorsError ||
+    (search ? isSearchError : isPopularError)
+
+  const refetch = () => {
+    refetchGenres()
+    refetchDirectors()
+    search ? refetchSearch() : refetchPopular()
   }
+
+  return { movies, isError, refetch }
 }

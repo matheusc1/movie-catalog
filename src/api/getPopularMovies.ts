@@ -5,6 +5,7 @@ export type Movie = {
   genre_ids: number[]
   genres?: string[]
   poster_path: string
+  popularity: number
 }
 
 export async function getPopularMovies(): Promise<Movie[]> {
