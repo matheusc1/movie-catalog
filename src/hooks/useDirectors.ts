@@ -1,15 +1,13 @@
 import { useQuery } from '@tanstack/react-query'
 import { getDirectors } from '../api/getDirectors'
-import { useRawMovies } from './useRawMovies'
 
-export function useDirectors() {
-  const { rawMovies: movies } = useRawMovies()
-
+export function useDirectors(movieIds?: number[]) {
   const { data: directors, isError, refetch } = useQuery({
-    queryKey: ['directors', movies?.map(m => m.id)],
-    enabled: !!movies,
-    queryFn: () => getDirectors(movies!.map(m => m.id)),
+    queryKey: ['directors', movieIds],
+    enabled: !!movieIds?.length,
+    queryFn: () => getDirectors(movieIds!),
   })
 
   return { directors, isError, refetch }
 }
+
