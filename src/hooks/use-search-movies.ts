@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import { getMoviesBySearch } from '../api/getMoviesBySearch'
-import type { Movie } from '../api/getPopularMovies'
+import { getMoviesBySearch } from '../api/get-movies-by-search'
+import type { Movie } from '../api/get-popular-movies'
 
 export function useSearchMovies(search: string) {
   const {

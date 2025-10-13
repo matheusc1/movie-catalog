@@ -1,4 +1,4 @@
-import type { Movie } from './getPopularMovies'
+import type { Movie } from './get-popular-movies'
 
 export async function getMoviesBySearch(movie: string): Promise<Movie[]> {
   try {

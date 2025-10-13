@@ -1,6 +1,6 @@
-import type { Director } from '../api/getDirectors'
-import type { Genres } from '../api/getGenres'
-import type { Movie } from '../api/getPopularMovies'
+import type { Director } from '../api/get-directors'
+import type { Genres } from '../api/get-genres'
+import type { Movie } from '../api/get-popular-movies'
 
 export function mapMovies(
   movies: Movie[] | undefined,

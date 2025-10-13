@@ -1,8 +1,8 @@
 import { useIsFetching } from '@tanstack/react-query'
 import { Card } from '../components/card'
-import { CardSkeleton } from '../components/cardSkeleton'
-import { ErrorFallback } from '../components/errorFallback'
-import { useMovies } from '../hooks/useMovies'
+import { CardSkeleton } from '../components/card-skeleton'
+import { ErrorFallback } from '../components/error-fallback'
+import { useMovies } from '../hooks/use-movies'
 
 export function PopularMovies() {
   const isFetching = useIsFetching()

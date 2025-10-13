@@ -1,8 +1,8 @@
 import { mapMovies } from '../utils/map-movies'
-import { useDirectors } from './useDirectors'
-import { useGenres } from './useGenres'
-import { usePopularMovies } from './usePopularMovies'
-import { useSearchMovies } from './useSearchMovies'
+import { useDirectors } from './use-directors'
+import { useGenres } from './use-genres'
+import { usePopularMovies } from './use-popular-movies'
+import { useSearchMovies } from './use-search-movies'
 
 interface UseMoviesOptions {
   search?: string

@@ -1,4 +1,4 @@
-import type { Movie } from '../api/getPopularMovies'
+import type { Movie } from '../api/get-popular-movies'
 
 interface MovieProps {
   movie: Movie
