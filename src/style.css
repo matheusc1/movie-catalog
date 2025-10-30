@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz@0,6..12;1,6..12&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -12,6 +12,8 @@
   --color-neutral-750: #2D2D2D;
   --color-neutral-775: #2C2C2B;
 
-  --font-title: 'Quicksand', sans-serif;
+  --font-title: 'Montserrat', sans-serif;
   --font-sans: 'Nunito Sans', sans-serif;
+
+  --max-width-app: 1180px;
 }
