@@ -13,9 +13,9 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <PopularMovies /> },
       { path: 'search', element: <Search /> },
-      { path: 'movie/:id', element: <MovieDetails /> },
     ],
   },
+  { path: 'movie/:id', element: <MovieDetails /> },
 ])
 
 export function App() {
