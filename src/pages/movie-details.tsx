@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router'
 
 import { ErrorFallback } from '../components/error-fallback'
 import { Header } from '../components/header'
+import { Loading } from '../components/loading'
 
 import { useMovieDetails } from '../hooks/use-movie-details'
 
@@ -11,20 +12,31 @@ export function MovieDetails() {
   const { id } = useParams()
 
   const isFetching = useIsFetching()
-  const { movieDetails, isError, refetch } = useMovieDetails(Number(id))
+  const { movieDetails, isError, isLoading, refetch } = useMovieDetails(
+    Number(id)
+  )
+
+  if (isLoading) {
+    return <Loading />
+  }
 
   if (isError) {
     return <ErrorFallback onRetry={refetch} isFetching={isFetching > 0} />
   }
 
-  const backgroundStyle = {
+  const cover = {
     backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${movieDetails.backdrop_path})`,
   }
 
   const runtime = movieDetails.runtime
   const duration = `${Math.floor(runtime! / 60)}h ${runtime! % 60}m`
 
-  const country = movieDetails.production_countries![0].name ?? ''
+  const formattedDate = movieDetails.release_date
+    ? new Date(movieDetails.release_date).toLocaleDateString('pt-BR')
+    : 'Data indisponível'
+
+  const country =
+    movieDetails.production_countries?.[0]?.iso_3166_1 ?? 'Desconhecido'
 
   return (
     <div className="max-w-screen pt-10 px-6 sm:px-0">
@@ -40,7 +52,7 @@ export function MovieDetails() {
       <div className="relative w-full h-[600px] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center blur-[2px]"
-          style={backgroundStyle}
+          style={cover}
         />
         <div className="absolute inset-0 bg-neutral-50/85 dark:bg-neutral-900/85"></div>
 
@@ -58,7 +70,7 @@ export function MovieDetails() {
               </h1>
 
               <div className="text-neutral-700 dark:text-neutral-200">
-                <span className="mr-2">{movieDetails.release_date}</span>•
+                <span className="mr-2">{formattedDate}</span>•
                 <span className="mx-2">
                   {movieDetails.genres?.map(genre => genre.name).join(', ')}
                 </span>
@@ -73,7 +85,10 @@ export function MovieDetails() {
               <p className="font-bold font-title text-neutral-950 dark:text-neutral-50 text-2xl">
                 Sinopse
               </p>
-              <p>{movieDetails.overview}</p>
+              <p>
+                {movieDetails.overview ||
+                  'Sinopse indisponível para este título.'}
+              </p>
             </div>
 
             <div className="flex gap-20">

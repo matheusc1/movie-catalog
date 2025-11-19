@@ -3,7 +3,7 @@ import { GetMovieDetails, type MovieDetails } from '../api/get-movie-details'
 import { useDirectors } from './use-directors'
 
 export function useMovieDetails(id: number) {
-  const { data, isError, refetch } = useQuery<MovieDetails>({
+  const { data, isError, refetch, isLoading } = useQuery<MovieDetails>({
     queryKey: ['movie', id],
     queryFn: () => GetMovieDetails(id),
     staleTime: Infinity,
@@ -17,5 +17,5 @@ export function useMovieDetails(id: number) {
     director: data?.director ?? directors?.find(d => d.movieId === data?.id)?.director
   }
 
-  return { movieDetails, isError, refetch }
+  return { movieDetails, isError, refetch, isLoading }
 }
