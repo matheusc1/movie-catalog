@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import type { Movie } from '../api/get-popular-movies'
 
 interface MovieProps {
@@ -6,7 +7,10 @@ interface MovieProps {
 
 export function Card({ movie }: MovieProps) {
   return (
-    <div className="w-[280px] h-fit flex flex-col items-center border-1 dark:bg-neutral-800 border-neutral-175 dark:border-neutral-750 rounded-[10px]">
+    <Link
+      to={`/movie/${movie.id}`}
+      className="w-[280px] h-fit flex flex-col items-center border-1 dark:bg-neutral-800 border-neutral-175 dark:border-neutral-750 rounded-[10px] hover:bg-neutral-100 dark:hover:bg-neutral-700 "
+    >
       <img
         src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
         className="w-[108px] h-[145px] content-center"
@@ -31,6 +35,6 @@ export function Card({ movie }: MovieProps) {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
