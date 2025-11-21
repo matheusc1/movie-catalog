@@ -2,11 +2,13 @@ import { useIsFetching } from '@tanstack/react-query'
 import { LucideArrowLeft, LucideStar } from 'lucide-react'
 import { Link, useParams } from 'react-router'
 
+import { CountryFlag } from '../components/country-flag'
 import { ErrorFallback } from '../components/error-fallback'
 import { Header } from '../components/header'
 import { Loading } from '../components/loading'
 
 import { useMovieDetails } from '../hooks/use-movie-details'
+import { formatDate, formatTime } from '../utils/formatter'
 
 export function MovieDetails() {
   const { id } = useParams()
@@ -16,9 +18,7 @@ export function MovieDetails() {
     Number(id)
   )
 
-  if (isLoading) {
-    return <Loading />
-  }
+  if (isLoading) return <Loading />
 
   if (isError) {
     return <ErrorFallback onRetry={refetch} isFetching={isFetching > 0} />
@@ -27,13 +27,6 @@ export function MovieDetails() {
   const cover = {
     backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${movieDetails.backdrop_path})`,
   }
-
-  const runtime = movieDetails.runtime
-  const duration = `${Math.floor(runtime! / 60)}h ${runtime! % 60}m`
-
-  const formattedDate = movieDetails.release_date
-    ? new Date(movieDetails.release_date).toLocaleDateString('pt-BR')
-    : 'Data indisponível'
 
   const country =
     movieDetails.production_countries?.[0]?.iso_3166_1 ?? 'Desconhecido'
@@ -70,11 +63,15 @@ export function MovieDetails() {
               </h1>
 
               <div className="text-neutral-700 dark:text-neutral-200">
-                <span className="mr-2">{formattedDate}</span>•
+                <span className="mr-2">
+                  {formatDate(movieDetails.release_date)}
+                </span>
+                •
                 <span className="mx-2">
                   {movieDetails.genres?.map(genre => genre.name).join(', ')}
                 </span>
-                •<span className="ml-2">{duration}</span>
+                •
+                <span className="ml-2">{formatTime(movieDetails.runtime)}</span>
               </div>
             </div>
 
@@ -116,9 +113,13 @@ export function MovieDetails() {
               </div>
 
               <div>
-                <p className="font-title font-bold text-neutral-950 dark:text-neutral-50">
-                  {country}
-                </p>
+                <div className="flex gap-x-1.5 items-center">
+                  <p className="font-title font-bold text-neutral-950 dark:text-neutral-50">
+                    {country}
+                  </p>
+                  <CountryFlag code={country} />
+                </div>
+
                 <span className="text-sm text-neutral-700 dark:text-neutral-200">
                   País de produção
                 </span>
