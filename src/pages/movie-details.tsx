@@ -32,8 +32,8 @@ export function MovieDetails() {
     movieDetails.production_countries?.[0]?.iso_3166_1 ?? 'Desconhecido'
 
   return (
-    <div className="max-w-screen pt-10 px-6 sm:px-0">
-      <div className="max-w-app mx-auto space-y-10 mb-5">
+    <div className="max-w-screen pt-10">
+      <div className="max-w-app mx-auto space-y-10 mb-5 px-6 sm:px-0">
         <Header />
 
         <Link to="/" className="flex items-center justify-start gap-2 ">
@@ -42,21 +42,21 @@ export function MovieDetails() {
         </Link>
       </div>
 
-      <div className="relative w-full h-[600px] overflow-hidden">
+      <div className="relative w-full h-full md:h-[587px] overflow-ellipsis sm:overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center blur-[2px]"
+          className="absolute inset-0 blur-[2px]"
           style={cover}
         />
-        <div className="absolute inset-0 bg-neutral-50/85 dark:bg-neutral-900/85"></div>
+        <div className="absolute inset-0 -mt-1 sm:-mt-0 bg-neutral-50/85 dark:bg-neutral-900/85" />
 
-        <div className="flex gap-20 relative z-10 max-w-app mx-auto pt-10 px-6 sm:px-0 h-full">
+        <div className="flex flex-col md:flex-row gap-6 relative z-10 max-w-app mx-auto pt-10 px-6 sm:px-0 h-full">
           <img
             src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movieDetails.poster_path}`}
-            className="w-[320px] h-[480px]"
+            className="w-[320px] h-[480px] mx-auto md:mx-0"
             alt="Movie Poster"
           />
 
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-7 sm:gap-10 mb-5 sm:mb-0">
             <div className="space-y-2">
               <h1 className="font-title font-bold text-4xl text-neutral-950 dark:text-neutral-50">
                 {movieDetails.title}
@@ -88,7 +88,7 @@ export function MovieDetails() {
               </p>
             </div>
 
-            <div className="flex gap-20">
+            <div className="flex gap-5 md:gap-20">
               <div>
                 <div className="flex items-center justify-center gap-1.5 font-title font-bold text-neutral-950 dark:text-neutral-50">
                   {movieDetails.vote_average?.toFixed(1)}/10
