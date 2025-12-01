@@ -56,7 +56,7 @@ export function MovieDetails() {
             alt="Movie Poster"
           />
 
-          <div className="flex flex-col gap-7 sm:gap-10 mb-5 sm:mb-0">
+          <div className="flex flex-col gap-7 sm:gap-10 pb-10 sm:pb-0">
             <div className="space-y-2">
               <h1 className="font-title font-bold text-4xl text-neutral-950 dark:text-neutral-50">
                 {movieDetails.title}
