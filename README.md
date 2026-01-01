@@ -4,7 +4,7 @@
 [![Deploy](https://img.shields.io/badge/Live%20Demo-Vercel-brightgreen?logo=vercel)](https://movie-catalog-sage.vercel.app)
 
 ### Preview 📸
-**(Em Breve: Imagens e GIFs do catálogo em ação)** ⏳ 
+![Movie Catalog Preview](./public/project-preview.png)
 
 # Movie Catalog 🎥
 
