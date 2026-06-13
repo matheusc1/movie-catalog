@@ -18,7 +18,7 @@ export function Search() {
   }
 
   return (
-    <div className="space-y-8 px-6 lg:px-3">
+    <div className="space-y-8">
       <h1 className="text-2xl font-title font-extrabold text-ink-900 dark:text-paper-100 text-left">
         Resultados da busca por: "{search}"
       </h1>

@@ -6,7 +6,7 @@ export function Layout() {
     <div className="min-h-dvh">
       <Header />
 
-      <main className="max-w-app w-full mx-auto px-6 lg:px-0 py-8 space-y-8">
+      <main className="max-w-app w-full mx-auto px-6 lg:px-3 py-8 space-y-8">
         <Outlet />
       </main>
     </div>

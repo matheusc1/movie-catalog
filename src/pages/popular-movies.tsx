@@ -13,7 +13,7 @@ export function PopularMovies() {
   }
 
   return (
-    <div className="space-y-8 px-6 lg:px-3">
+    <div className="space-y-8">
       <h1 className="text-3xl font-title font-extrabold text-ink-900 dark:text-paper-100 text-left">
         Filmes mais populares
       </h1>
