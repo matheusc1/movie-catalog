@@ -32,10 +32,10 @@ export function MovieDetails() {
     movieDetails.production_countries?.[0]?.iso_3166_1 ?? 'Desconhecido'
 
   return (
-    <div className="px-6 lg:px-0">
+    <div>
       <Header />
 
-      <div className="max-w-app mx-auto pt-6 pb-10">
+      <div className="max-w-app mx-auto px-6 lg:px-3 pt-6 pb-10">
         <Link
           to="/"
           className="inline-flex items-center gap-2 font-mono text-sm uppercase tracking-wide text-ink-700/70 dark:text-paper-600 hover:text-marquee transition-colors mb-6"
@@ -51,7 +51,7 @@ export function MovieDetails() {
           <div className="relative z-10 flex flex-col md:flex-row gap-8 p-6 sm:p-10">
             <img
               src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movieDetails.poster_path}`}
-              className="w-[240px] h-[360px] object-cover mx-auto md:mx-0 rounded shrink-0"
+              className="w-60 h-90 object-cover mx-auto md:mx-0 rounded shrink-0"
               alt={`Pôster do filme ${movieDetails.title}`}
             />
 

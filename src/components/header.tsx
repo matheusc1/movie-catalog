@@ -18,8 +18,8 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 -mx-6 sm:mx-0 px-6 sm:px-0 bg-paper-50/90 dark:bg-ink-900/90 backdrop-blur-md">
-      <div className="max-w-app mx-auto flex items-center gap-3 sm:gap-10 py-4">
+    <header className="sticky top-0 z-50 w-full bg-paper-50/90 dark:bg-ink-900/90 backdrop-blur-md">
+      <div className="max-w-app mx-auto px-6 lg:px-3 flex items-center gap-3 sm:gap-10 py-4">
         <Link to="/" className="flex items-center gap-2 shrink-0">
           <img src={TicketMark} alt="Movie Catalog" className="w-9 h-9" />
           <span className="hidden sm:inline font-title font-extrabold text-2xl tracking-wide text-ink-900 dark:text-paper-100">
