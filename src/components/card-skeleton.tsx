@@ -1,16 +1,18 @@
 export function CardSkeleton() {
   return (
-    <div className="w-[280px] h-fit flex flex-col items-center border-1 dark:bg-neutral-800 border-neutral-175 dark:border-neutral-750 rounded-[10px]">
-      <div className="w-[108px] h-[145px] bg-neutral-200 dark:bg-neutral-700 animate-pulse" />
-      <div className="h-0.25 w-full bg-neutral-150 dark:bg-neutral-725" />
-      <div className="w-full p-4 space-y-4">
-        <div className="h-7 w-48 bg-neutral-200 dark:bg-neutral-700 rounded-md animate-pulse" />
+    <div className="w-[320px] h-[160px] flex bg-paper-50 dark:bg-ink-850 border border-ink-700/15 dark:border-paper-200/10 rounded-lg overflow-hidden">
+      <div className="w-[108px] h-full bg-ink-700/10 dark:bg-paper-200/10 animate-pulse shrink-0" />
+
+      <div className="perforation-v" />
+
+      <div className="flex-1 flex flex-col justify-between p-4 min-w-0">
         <div className="space-y-2">
-          <div className="h-4 w-24 bg-neutral-200 dark:bg-neutral-700 rounded-md animate-pulse" />
-          <div className="flex gap-2 flex-row">
-            <div className="rounded-md h-6 w-20 bg-neutral-125 dark:bg-neutral-725 animate-pulse" />
-            <div className="rounded-md h-6 w-20 bg-neutral-125 dark:bg-neutral-725 animate-pulse" />
-          </div>
+          <div className="h-5 w-40 bg-ink-700/10 dark:bg-paper-200/10 rounded animate-pulse" />
+          <div className="h-4 w-24 bg-ink-700/10 dark:bg-paper-200/10 rounded animate-pulse" />
+        </div>
+        <div className="flex gap-1.5">
+          <div className="h-5 w-16 bg-ink-700/10 dark:bg-paper-200/10 rounded animate-pulse" />
+          <div className="h-5 w-16 bg-ink-700/10 dark:bg-paper-200/10 rounded animate-pulse" />
         </div>
       </div>
     </div>

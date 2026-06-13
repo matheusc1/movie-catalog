@@ -1,6 +1,6 @@
 ![React](https://img.shields.io/badge/React-19.1-blue?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?logo=typescript) 
-![Status](https://img.shields.io/badge/Status-Em%20desenvolvimento-yellow) 
+![Status](https://img.shields.io/badge/Status-Conclu%C3%ADdo-brightgreen)
 [![Deploy](https://img.shields.io/badge/Live%20Demo-Vercel-brightgreen?logo=vercel)](https://movie-catalog-sage.vercel.app)
 
 ### Preview 📸
@@ -13,8 +13,8 @@ Catálogo de filmes desenvolvido com React e TypeScript, onde é possível acomp
 ## Funcionalidades 🚀
 
 - Acompanhar os filmes mais populares do momento
-- Pesquisar filmes específicos ⏳
-- Ver detalhes dos filmes ⏳
+- Pesquisar filmes específicos
+- Ver detalhes dos filmes
 - Responsividade mobile
 - Tema claro e escuro
 
@@ -45,7 +45,9 @@ npm run dev
 
 ## Design 🎨
 
-Layout desenvolvido no Figma: [Movie Catalog](https://www.figma.com/design/8FRBJSj3mKpcv6s6ZulXaE/movie-catalog?node-id=0-1&p=f&t=FPxjUAdjaC0a9QqA-0)
+Identidade visual com tema de ingresso de cinema (ticket stub), com paleta, tipografia e componentes próprios desenhados durante o refactor do projeto.
+
+Protótipo no Figma: [Movie Catalog](https://www.figma.com/design/8FRBJSj3mKpcv6s6ZulXaE/movie-catalog?node-id=222-102&t=gfZyVJPdjcOhaYKs-1)
 
 ## License 🧾
 Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.

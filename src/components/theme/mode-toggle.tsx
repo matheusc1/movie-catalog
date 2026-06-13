@@ -10,11 +10,13 @@ export function ModeToggle() {
 
   return (
     <label className="inline-flex items-center cursor-pointer">
-      <span className="mr-2 hidden sm:inline">Tema escuro</span>
+      <span className="mr-2 hidden sm:inline font-mono text-xs uppercase tracking-widest text-ink-700/70 dark:text-paper-600">
+        Tema escuro
+      </span>
       {theme === 'dark' ? (
-        <LucideMoon className="mr-1 size-5 text-neutral-400 sm:hidden" />
+        <LucideMoon className="mr-1 size-5 text-paper-600 sm:hidden" />
       ) : (
-        <LucideSun className="mr-1 size-5 text-yellow-500 sm:hidden" />
+        <LucideSun className="mr-1 size-5 text-gold sm:hidden" />
       )}
       <input
         aria-label="Alternar tema"
@@ -23,7 +25,7 @@ export function ModeToggle() {
         checked={theme === 'dark'}
         onChange={toggleTheme}
       />
-      <div className="w-11 h-6 rounded-full bg-neutral-200 peer-checked:bg-blue-600 relative after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:h-5 after:w-5 after:bg-white after:rounded-full after:border after:border-neutral-300 after:transition-all peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full" />
+      <div className="w-11 h-6 rounded-full bg-ink-700/20 dark:bg-paper-200/20 peer-checked:bg-marquee relative after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:h-5 after:w-5 after:bg-paper-50 after:rounded-full after:border after:border-ink-700/15 after:transition-all peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full" />
     </label>
   )
 }

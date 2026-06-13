@@ -9,30 +9,41 @@ export function Card({ movie }: MovieProps) {
   return (
     <Link
       to={`/movie/${movie.id}`}
-      className="w-[280px] h-fit flex flex-col items-center border-1 dark:bg-neutral-800 border-neutral-175 dark:border-neutral-750 rounded-[10px] hover:bg-neutral-100 dark:hover:bg-neutral-700 "
+      className="group w-full h-[160px] flex bg-paper-50 dark:bg-ink-850 border border-ink-700/15 dark:border-paper-200/10 rounded-lg overflow-hidden hover:border-marquee/50 transition-colors"
     >
       <img
         src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-        className="w-[108px] h-[145px] content-center"
-        alt={`${movie.title} banner`}
+        className="w-[108px] h-full object-cover shrink-0"
+        alt={`Pôster do filme ${movie.title}`}
       />
-      <div className="h-0.25 w-full bg-neutral-150 dark:bg-neutral-725" />
-      <div className="w-full text-start p-4 space-y-3">
-        <p className="text-lg font-bold font-title truncate">{movie.title}</p>
-        <div className="space-y-2">
-          <p className="text-sm text-neutral-700 dark:text-neutral-300">
-            {movie.director || 'Desconhecido'}
+
+      <div className="perforation-v" />
+
+      <div className="flex-1 flex flex-col justify-between p-4 min-w-0">
+        <div className="space-y-1.5">
+          <p className="font-title font-bold text-lg leading-tight text-ink-900 dark:text-paper-100 truncate">
+            {movie.title}
           </p>
-          <div className="flex gap-2 flex-row">
+          <p className="text-sm text-ink-700/70 dark:text-paper-600 truncate">
+            {movie.director || 'Diretor desconhecido'}
+          </p>
+        </div>
+
+        <div className="flex items-end justify-between gap-2">
+          <div className="flex gap-1.5 flex-wrap">
             {movie.genres?.map(genre => (
-              <div
+              <span
                 key={genre}
-                className="text-sm rounded-md px-2 py-0.5 w-fit bg-neutral-125 text-neutral-700 dark:text-neutral-300 dark:bg-neutral-725"
+                className="font-mono text-[11px] uppercase tracking-wide px-1.5 py-0.5 rounded border border-ink-700/15 dark:border-paper-200/15 text-ink-700/70 dark:text-paper-600"
               >
-                {genre || 'Desconhecido'}
-              </div>
+                {genre}
+              </span>
             ))}
           </div>
+
+          <span className="font-mono text-[11px] text-gold shrink-0">
+            Nº {String(movie.id).padStart(6, '0')}
+          </span>
         </div>
       </div>
     </Link>

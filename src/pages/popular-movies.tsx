@@ -13,17 +13,18 @@ export function PopularMovies() {
   }
 
   return (
-    <div className="space-y-10">
-      <h1 className="text-3xl font-title text-neutral-950 dark:text-neutral-50 font-bold">
+    <div className="space-y-8">
+      <h1 className="text-3xl font-title font-extrabold text-ink-900 dark:text-paper-100 text-left">
         Filmes mais populares
       </h1>
-      <div className="flex gap-5 flex-wrap justify-center">
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {movies?.map(movie => (
           <Card key={movie.id} movie={movie} />
         ))}
 
         {isFetching > 0 &&
-          Array.from({ length: 8 }).map((_, index) => (
+          Array.from({ length: 6 }).map((_, index) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: it's a static list
             <CardSkeleton key={index} />
           ))}
